@@ -81,6 +81,14 @@
                 @endif
             @endif
         </div>
+        <!-- Test Fecha -->
+        <div class="col-span-6 sm:col-span-2">
+            <x-jet-label for="fecha" value="{{ __('DDate') }}" />
+            <x-jet-input id="fecha" type="text" class="mt-1 block w-full" wire:model.lazy="state.fecha"  placeholder="dd/mm/aaaa"/>
+            <x-jet-input-error for="fecha" class="mt-2" />
+
+
+        </div>
     </x-slot>
 
     <x-slot name="actions">
@@ -93,3 +101,28 @@
         </x-jet-button>
     </x-slot>
 </x-jet-form-section>
+@section('styles')
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+@endsection
+@section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+<script>
+    var picker = new Pikaday({
+            field: document.getElementById('fecha'),
+            format:"DD/MM/YYYY",
+            firstDay: 1,
+            i18n: {
+                previousMonth : 'Anterior',
+                nextMonth     : 'Siguiente',
+                months        : ['Enero','Febrero','Marzo','April','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+                weekdays      : ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+                weekdaysShort : ['Do','Lu','Ma','Mi','Ju','Vi','Sa']
+            },
+            onSelect: function() {
+            console.log(this.getMoment().format('Do MMMM YYYY'));
+
+        }
+        });
+</script>
+@endsection
