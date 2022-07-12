@@ -1,0 +1,3 @@
+<div>
+    articulos index
+</div>
