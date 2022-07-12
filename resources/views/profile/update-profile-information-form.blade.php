@@ -89,6 +89,21 @@
 
 
         </div>
+
+        <div
+            x-data
+            x-init="new Pikaday({ field: $refs.input, 'format': 'DD/MM/YYYY', firstDay: 1, minDate: new Date(), weekdaysShort : ['Do','Lu','Ma','Mi','Ju','Vi','Sa']});"
+            class="col-span-6 sm:col-span-2">
+            <div class="relative mt-2">
+                <input
+                    class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full mt-1 block w-full"
+                    x-ref="input"
+                    wire:model.lazy="state.fecha"
+                    type="text"
+                    placeholder="Seleccionar"
+                />
+            </div>
+        </div>
     </x-slot>
 
     <x-slot name="actions">
@@ -101,10 +116,14 @@
         </x-jet-button>
     </x-slot>
 </x-jet-form-section>
-@section('styles')
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
-@endsection
 @section('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+@endsection
+{{--
+    @section('styles')
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+    @endsection
+    @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
 <script>
@@ -125,4 +144,4 @@
         }
         });
 </script>
-@endsection
+@endsection --}}
