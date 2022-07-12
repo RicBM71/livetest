@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Articles;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('users');
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->get('/articles', Articles::class)->name('articles');
 
 Route::middleware([
     'auth:sanctum',

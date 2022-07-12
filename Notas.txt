@@ -1,0 +1,7 @@
+Aprende Laravel Livewire desde cero
+
+L6 - Modificadore, lazy debounce, etc.
+
+ modificar datos, checkboxes, select, etc. interesante para modificar y enviar al componente php.
+
+L7
