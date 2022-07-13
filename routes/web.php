@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Livewire\Articles;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\Articles\ArticlesForm;
+use App\Http\Livewire\Articles\ArticlesIndex;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,18 +19,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->get('/articles', Articles::class)->name('articles');
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+// ])->get('/articles', Articles::class)->name('articles');
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
+
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('dashboard', ['empresa' => 'Kilates']);
     })->name('dashboard');
+
+    Route::get('/articles', ArticlesIndex::class)->name('articles.index');
+    Route::get('/articles/create', ArticlesForm::class)->name('articles.create');
+
 });

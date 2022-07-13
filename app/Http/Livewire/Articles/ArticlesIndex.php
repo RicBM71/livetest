@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Articles;
 
 use App\Models\Article;
 use Livewire\Component;
 
-class Articles extends Component
+class ArticlesIndex extends Component
 {
     public $articulos;
     public $categoria;
@@ -21,6 +21,6 @@ class Articles extends Component
 
         $this->articulos = Article::where('title', 'like', "%{$this->search}%")->get();
 
-        return view('livewire.articles');
+        return view('livewire.articles.articles-index');
     }
 }

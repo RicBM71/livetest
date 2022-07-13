@@ -13,9 +13,9 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-1 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard**') }}
+                        {{ __('Home') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('articles') }}" :active="request()->routeIs('articles')">
+                    <x-jet-nav-link href="{{ route('articles.index') }}" :active="request()->routeIs('articles')">
                         {{ __('Articulos') }}
                     </x-jet-nav-link>
                 </div>
